@@ -1,4 +1,4 @@
 ---
-external_interface: en0
+external_interface: enp0s3
 dport: "80"
-internal_service: 192.168.0.2:9000
+internal_service: 192.168.0.2:8080

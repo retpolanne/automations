@@ -1,0 +1,12 @@
+---
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp0s3:
+      addresses:
+      - {{ ip_address }}
+      gateway4: {{ gateway_address }}
+      nameservers:
+        addresses:
+        - 8.8.8.8

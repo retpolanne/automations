@@ -7,5 +7,6 @@
   roles:
     - common
     - ssh-access
+    - netplan
     - tomcat
 

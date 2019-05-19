@@ -1,4 +1,4 @@
 ---
-external_interface: en0
-internal_interface: en1
+external_interface: enp0s3
+internal_interface: enp0s8
 

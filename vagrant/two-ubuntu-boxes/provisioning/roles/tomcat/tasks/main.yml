@@ -48,5 +48,3 @@
     name: tomcat.service
     state: started
 
-- name: Check if tomcat is up
-  shell: curl localhost:8080/

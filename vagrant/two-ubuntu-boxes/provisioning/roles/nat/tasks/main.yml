@@ -17,9 +17,13 @@
   iptables:
     chain: FORWARD
     in_interface: "{{ internal_interface }}"
-    out_interface: "{{ internal_interface }}"
     jump: ACCEPT
 
+- name: Forward output rules
+  iptables:
+    chain: FORWARD
+    out_interface: "{{ internal_interface }}"
+    jump: ACCEPT
 
 # iptables -t nat -A POSTROUTING -o en0 -j MASQUERADE
 
