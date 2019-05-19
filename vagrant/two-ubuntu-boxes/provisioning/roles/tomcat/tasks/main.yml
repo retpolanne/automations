@@ -49,4 +49,4 @@
     state: started
 
 - name: Check if tomcat is up
-  shell: curl localhost:8080
+  shell: curl localhost:8080/
