@@ -1,0 +1,13 @@
+---
+
+# iptables -t nat -A PREROUTING -i en0 -p tcp --dport 80 -j DNAT --to somewhere:8000
+
+- name: Prerouting rule
+  iptables:
+    table: nat
+    chain: PREROUTING
+    in_interface: "{{ external_interface }}"
+    jump: DNAT
+    destination_port: "{{ dport }}"
+    to_destination: "{{ internal_service }}"
+    protocol: tcp

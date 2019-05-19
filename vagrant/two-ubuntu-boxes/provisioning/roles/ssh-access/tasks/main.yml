@@ -1,0 +1,31 @@
+---
+
+- name: Create passwordless group
+  group:
+    name: passwordless
+    state: present
+
+- name: Add passwordless group to sudoers
+  copy:
+    src: files/passwordless
+    dest: /etc/sudoers.d/passwordless
+    owner: root
+    group: root
+    mode: '0440'
+    validate: /usr/sbin/visudo -cf %s
+
+- name: Add user to instance
+  user:
+    name: "{{ item.username }}"
+    shell: /bin/bash
+    groups: "{{ item.groups }}"
+  loop:
+    - { username: 'vinicyusmacedo', groups: 'passwordless' }
+
+- name: Add user ssh key
+  authorized_key:
+    user: "{{ item.username }}"
+    state: present
+    key: "{{ item.key_url }}"
+  loop:
+    - { username: 'vinicyusmacedo', key_url: 'http://github.com/vinicyusmacedo.keys' }

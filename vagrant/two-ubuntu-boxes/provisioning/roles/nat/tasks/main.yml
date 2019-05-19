@@ -1,0 +1,31 @@
+---
+
+# sysctl -w net.ipv4.ip_forward=1
+
+- name: Enable ipv4 forward
+  sysctl:
+    name: net.ipv4.ip_forward
+    value: "1"
+    sysctl_set: yes
+    state: present
+    reload: yes
+
+# iptables -A FORWARD -i en1 -j ACCEPT
+# iptables -A FORWARD -o en1 -j ACCEPT
+
+- name: Forward input rules
+  iptables:
+    chain: FORWARD
+    in_interface: "{{ internal_interface }}"
+    out_interface: "{{ internal_interface }}"
+    jump: ACCEPT
+
+
+# iptables -t nat -A POSTROUTING -o en0 -j MASQUERADE
+
+- name: Masquerade rule
+  iptables:
+    table: nat
+    chain: POSTROUTING
+    out_interface: "{{ external_interface }}"
+    jump: MASQUERADE
