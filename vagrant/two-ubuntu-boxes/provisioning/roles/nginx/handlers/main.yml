@@ -1,0 +1,5 @@
+---
+
+- name: reload nginx
+  listen: link nginx config
+  shell: nginx -s reload

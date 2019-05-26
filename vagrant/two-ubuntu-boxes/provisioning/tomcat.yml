@@ -4,9 +4,15 @@
   remote_user: root
   become: yes
   become_method: sudo
+  vars:
+    - internal_ip: 10.49.0.2/24
+    - gateway_address: 10.49.0.1
+    - internal_iface: enp0s8
+    - is_gateway: false
   roles:
+    - netplan
     - common
     - ssh-access
-    - netplan
     - tomcat
+    - sample-java-app
 

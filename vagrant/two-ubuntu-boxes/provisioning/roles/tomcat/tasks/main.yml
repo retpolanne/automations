@@ -47,4 +47,12 @@
   systemd:
     name: tomcat.service
     state: started
+    enabled: yes
 
+- name: Get JDBC connector
+  get_url:
+    url: https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java_8.0.16-1ubuntu18.04_all.deb
+    dest: /tmp/mysql-connector.deb
+
+- name: Install JDBC connector
+  apt: 'deb="/tmp/mysql-connector.deb"'

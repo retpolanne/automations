@@ -1,0 +1,27 @@
+---
+
+- name: Install nginx
+  apt:
+    name: nginx
+    state: present
+
+- name: Add nginx sites
+  template:
+    src: templates/{{ item }}.j2
+    dest: /etc/nginx/sites-available/{{ item }}
+    owner: root
+    group: root
+  register: nginx_site_added
+  loop:
+  - tomcat
+
+- name: link nginx site
+  file:
+    src: /etc/nginx/sites-available/{{ item }}
+    dest: /etc/nginx/sites-enabled/{{ item }}
+    owner: root
+    group: root
+    state: link
+  notify: reload nginx
+  loop:
+  - tomcat

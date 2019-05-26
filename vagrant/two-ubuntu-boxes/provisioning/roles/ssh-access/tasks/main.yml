@@ -1,17 +1,11 @@
 ---
 
-- name: Create passwordless group
-  group:
-    name: passwordless
+- name: Add NOPASSWD to ADMIN
+  lineinfile:
+    path: /etc/sudoers
     state: present
-
-- name: Add passwordless group to sudoers
-  copy:
-    src: files/passwordless
-    dest: /etc/sudoers.d/passwordless
-    owner: root
-    group: root
-    mode: '0440'
+    regexp: '^%ADMIN ALL='
+    line: '%ADMIN ALL=(ALL) NOPASSWD: ALL'
     validate: /usr/sbin/visudo -cf %s
 
 - name: Add user to instance
@@ -20,7 +14,7 @@
     shell: /bin/bash
     groups: "{{ item.groups }}"
   loop:
-    - { username: 'vinicyusmacedo', groups: 'passwordless' }
+    - { username: 'vinicyusmacedo', groups: 'admin' }
 
 - name: Add user ssh key
   authorized_key:
@@ -28,4 +22,4 @@
     state: present
     key: "{{ item.key_url }}"
   loop:
-    - { username: 'vinicyusmacedo', key_url: 'http://github.com/vinicyusmacedo.keys' }
+    - { username: 'vinicyusmacedo', key_url: 'https://github.com/vinicyusmacedo.keys' }

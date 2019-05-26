@@ -6,7 +6,7 @@
   iptables:
     table: nat
     chain: PREROUTING
-    in_interface: "{{ external_interface }}"
+    in_interface: "{{ external_iface }}"
     jump: DNAT
     destination_port: "{{ dport }}"
     to_destination: "{{ internal_service }}"

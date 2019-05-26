@@ -1,5 +1,10 @@
 ---
 
+- name: Install iptables-persistent
+  apt:
+    name: iptables-persistent
+    state: present
+
 # sysctl -w net.ipv4.ip_forward=1
 
 - name: Enable ipv4 forward
@@ -16,14 +21,16 @@
 - name: Forward input rules
   iptables:
     chain: FORWARD
-    in_interface: "{{ internal_interface }}"
+    in_interface: "{{ internal_iface }}"
     jump: ACCEPT
+  notify: Save iptables
 
 - name: Forward output rules
   iptables:
     chain: FORWARD
-    out_interface: "{{ internal_interface }}"
+    out_interface: "{{ internal_iface }}"
     jump: ACCEPT
+  notify: Save iptables
 
 # iptables -t nat -A POSTROUTING -o en0 -j MASQUERADE
 
@@ -31,5 +38,6 @@
   iptables:
     table: nat
     chain: POSTROUTING
-    out_interface: "{{ external_interface }}"
+    out_interface: "{{ external_iface }}"
     jump: MASQUERADE
+  notify: Save iptables
