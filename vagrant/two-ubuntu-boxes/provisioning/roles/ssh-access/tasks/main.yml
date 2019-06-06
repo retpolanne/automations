@@ -1,0 +1,25 @@
+---
+
+- name: Add NOPASSWD to ADMIN
+  lineinfile:
+    path: /etc/sudoers
+    state: present
+    regexp: '^%ADMIN ALL='
+    line: '%ADMIN ALL=(ALL) NOPASSWD: ALL'
+    validate: /usr/sbin/visudo -cf %s
+
+- name: Add user to instance
+  user:
+    name: "{{ item.username }}"
+    shell: /bin/bash
+    groups: "{{ item.groups }}"
+  loop:
+    - { username: 'vinicyusmacedo', groups: 'admin' }
+
+- name: Add user ssh key
+  authorized_key:
+    user: "{{ item.username }}"
+    state: present
+    key: "{{ item.key_url }}"
+  loop:
+    - { username: 'vinicyusmacedo', key_url: 'https://github.com/vinicyusmacedo.keys' }

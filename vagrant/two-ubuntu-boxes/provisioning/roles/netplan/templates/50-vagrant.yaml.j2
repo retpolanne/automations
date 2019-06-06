@@ -1,0 +1,14 @@
+---
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    {{ internal_iface }}:
+      addresses:
+      - {{ internal_ip }}
+      {% if not is_gateway -%}
+      gateway4: {{ gateway_address }}
+      nameservers:
+        addresses:
+        - 8.8.8.8
+      {% endif %}

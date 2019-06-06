@@ -1,0 +1,8 @@
+---
+- name: Install psad
+  apt:
+    name: psad
+    state: present
+
+- name: Enable iptables log
+-     
