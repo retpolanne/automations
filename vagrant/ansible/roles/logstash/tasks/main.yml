@@ -1,6 +1,0 @@
----
-
-- name: Install elasticsearch
-  apt:
-    name: logstash
-    state: present
