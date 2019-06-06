@@ -4,8 +4,10 @@ network:
   renderer: networkd
   ethernets:
     {{ internal_iface }}:
+    {% if internal_ip -%}
       addresses:
       - {{ internal_ip }}
+    {% endif %}
       {% if not is_gateway -%}
       gateway4: {{ gateway_address }}
       nameservers:

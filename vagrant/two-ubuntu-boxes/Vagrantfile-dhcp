@@ -1,0 +1,19 @@
+Vagrant.configure("2") do |config|
+  config.vm.define "nat" do |nat|
+    nat.vm.box = "ubuntu/bionic64"
+    nat.vm.network "private_network", ip: "10.49.0.1",
+      virtualbox__intnet: true, auto_config: true
+    nat.vm.provision "ansible_local" do |ansible|
+      ansible.playbook = "provisioning/nat-with-dhcp.yml"
+    end
+  end
+
+  config.vm.define "backend" do |backend|
+    backend.vm.box = "ubuntu/bionic64"
+    backend.vm.network "private_network", ip: "10.49.0.2",
+      virtualbox__intnet: true, auto_config: true
+    backend.vm.provision "ansible_local" do |ansible|
+      ansible.playbook = "provisioning/tomcat-with-dhcp.yml"
+    end
+  end
+end
