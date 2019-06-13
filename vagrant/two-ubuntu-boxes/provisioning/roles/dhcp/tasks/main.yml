@@ -2,4 +2,4 @@
 - name: Install isc-dhcp-server
   apt:
     name: isc-dhcp-server
-    state: abstent
+    state: present
