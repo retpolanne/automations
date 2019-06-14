@@ -1,0 +1,9 @@
+default-lease-time 600;
+max-lease-time 7200;
+
+subnet {{ subnet }} netmask {{ netmask }} {
+  range {{ range_low }} {{ range_hi }};
+  option routers {{ gateway }};
+  option domain-name-servers {{ dns_server }};
+  option domain-name "{{ domain_name }}";
+}

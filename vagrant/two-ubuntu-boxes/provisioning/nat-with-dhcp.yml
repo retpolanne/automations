@@ -10,6 +10,12 @@
     - internal_iface: enp0s8
     - external_iface: enp0s3
     - is_gateway: true
+    - subnet: 172.24.0.0
+    - netmask: 255.248.0.0
+    - range_hi: 172.24.0.2
+    - range_low: 172.31.255.254
+    - gateway: 172.24.0.1
+    - dns_server: 172.24.0.1
   roles:
     - netplan
     - common

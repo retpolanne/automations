@@ -1,0 +1,7 @@
+---
+
+- name: reload dhcp-server 
+  systemd:
+    state: restarted
+    daemon_reload: yes
+    name: isc-dhcp-server
