@@ -3,7 +3,7 @@ Vagrant.configure("2") do |config|
     nat.vm.box = "ubuntu/bionic64"
     nat.vm.network "private_network", ip: "172.16.0.1",
       virtualbox__intnet: true, auto_config: true
-    nat.vm.provision "ansible_local" do |ansible|
+    nat.vm.provision "ansible" do |ansible|
       ansible.playbook = "provisioning/nat.yml"
     end
   end
@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
     backend.vm.box = "ubuntu/bionic64"
     backend.vm.network "private_network", ip: "172.16.0.2",
       virtualbox__intnet: true, auto_config: true
-    backend.vm.provision "ansible_local" do |ansible|
+    backend.vm.provision "ansible" do |ansible|
       ansible.playbook = "provisioning/tomcat.yml"
     end
   end
