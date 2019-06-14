@@ -1,13 +1,14 @@
 ---
+
 - name: Install isc-dhcp-server
   apt:
     name: isc-dhcp-server
     state: present
 
- - name: Copy dhcpd.conf
-   template:
-     src: templates/dhcpd.conf.j2
-     dest: /etc/dhcp/dhcpd.conf
-     owner: root
-     group: root
-   notify: reload dhcp-server
+- name: Copy dhcpd.conf
+  template:
+    src: templates/dhcpd.conf.j2
+    dest: /etc/dhcp/dhcpd.conf
+    owner: root
+    group: root
+  notify: reload dhcp-server 
