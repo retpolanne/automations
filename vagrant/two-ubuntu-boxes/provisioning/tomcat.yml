@@ -5,8 +5,8 @@
   become: yes
   become_method: sudo
   vars:
-    - internal_ip: 10.49.0.2/24
-    - gateway_address: 10.49.0.1
+    - internal_ip: 172.16.0.2/24
+    - gateway_address: 172.16.0.1
     - internal_iface: enp0s8
     - is_gateway: false
   roles:
