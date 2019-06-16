@@ -1,0 +1,13 @@
+acl "trusted" {
+	172.16.128.0/17; # trusted client range
+};
+options {
+	directory "/var/cache/bind";
+	recursion yes;
+	allow-recursion { trusted; };
+	forwarders {
+		8.8.8.8;
+	 };
+
+	listen-on { 172.16.0.1; 172.16.128.1; };
+};

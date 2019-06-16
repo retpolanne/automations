@@ -1,0 +1,9 @@
+zone "foobar.hedtrot.com" {
+	type master;
+	file "/etc/bind/zones/db.foobar.hedtrot.com";
+};
+
+zone "128.16.172.in-addr.arpa" {
+	type master;
+	file "/etc/bind/zones/db.128.16.172";
+};
