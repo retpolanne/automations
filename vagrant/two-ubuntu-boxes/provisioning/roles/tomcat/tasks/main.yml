@@ -34,6 +34,7 @@
     owner: tomcat
     group: tomcat
     extra_opts: [--strip-components=1]
+    remote_src: yes
 
 - name: Copy tomcat.service
   template:

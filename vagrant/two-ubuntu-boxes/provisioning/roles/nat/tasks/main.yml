@@ -4,7 +4,6 @@
   apt:
     name: iptables-persistent
     state: present
-    update_cache: yes
 
 # sysctl -w net.ipv4.ip_forward=1
 

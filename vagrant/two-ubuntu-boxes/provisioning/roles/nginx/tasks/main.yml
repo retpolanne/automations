@@ -5,6 +5,11 @@
     name: nginx
     state: present
 
+- name: Remove nginx default
+  file:
+    state: absent
+    path: /etc/nginx/sites-enabled/default
+
 - name: Add nginx sites
   template:
     src: templates/{{ item }}.j2

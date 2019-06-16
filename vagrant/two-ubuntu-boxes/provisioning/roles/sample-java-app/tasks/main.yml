@@ -16,3 +16,4 @@
     dest: /opt/tomcat/webapps/
     owner: tomcat
     group: tomcat
+    remote_src: yes
