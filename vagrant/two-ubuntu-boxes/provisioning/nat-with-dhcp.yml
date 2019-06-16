@@ -16,6 +16,7 @@
     - range_low: 172.31.255.254
     - gateway: 172.16.0.1
     - dns_server: 172.16.0.1
+    - domain_name: foobar.local
   roles:
     - netplan
     - common

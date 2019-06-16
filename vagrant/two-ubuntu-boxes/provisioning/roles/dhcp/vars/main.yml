@@ -1,8 +1,0 @@
----
-
-subnet: 
-netmask:
-range_hi:
-range_low:
-gateway:
-dns_server:
