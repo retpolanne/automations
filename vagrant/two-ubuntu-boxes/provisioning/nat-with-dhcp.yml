@@ -7,8 +7,8 @@
   vars:
     - internal_service: 172.16.0.2:8080
     - internal_ip: 172.16.0.1/24
-    - internal_iface: eth0
-    - external_iface: eth1
+    - internal_iface: enp0s8
+    - external_iface: enp0s3
     - is_gateway: true
     - subnet: 172.24.0.0
     - netmask: 255.248.0.0

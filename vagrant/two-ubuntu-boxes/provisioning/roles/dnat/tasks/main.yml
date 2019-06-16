@@ -11,3 +11,4 @@
     destination_port: "{{ dport }}"
     to_destination: "{{ internal_service }}"
     protocol: tcp
+  notify: Save iptables

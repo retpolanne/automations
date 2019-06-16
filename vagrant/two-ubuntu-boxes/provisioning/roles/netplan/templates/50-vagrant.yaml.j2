@@ -4,7 +4,7 @@ network:
   renderer: networkd
   ethernets:
     {{ internal_iface }}:
-    {% if internal_ip -%}
+    {% if internal_ip %}
       addresses:
       - {{ internal_ip }}
     {% endif %}
