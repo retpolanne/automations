@@ -1,0 +1,19 @@
+---
+
+- hosts: all
+  remote_user: root
+  become: yes
+  become_method: sudo
+  vars:
+    - internal_ip: 172.16.0.2/17
+    - gateway_address: 172.16.0.1
+    - internal_iface: enp0s8
+    - is_gateway: false
+    - dhcp_server: false
+  roles:
+    - netplan
+    - common
+    - ssh-access
+    - tomcat
+    - sample-java-app
+

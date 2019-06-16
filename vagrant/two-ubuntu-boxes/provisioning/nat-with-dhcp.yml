@@ -6,7 +6,7 @@
   become_method: sudo
   vars:
     - internal_service: 172.16.0.2:8080
-    - internal_ip: 172.16.0.1/24
+    - internal_ip: 172.16.0.1/17
     - internal_iface: enp0s8
     - external_iface: enp0s3
     - dhcp_iface: enp0s9
@@ -17,7 +17,7 @@
     - range_hi: 172.16.255.254
     - range_low: 172.16.128.2
     - gateway: 172.16.128.1
-    - gateway_ip: 172.16.128.1/24
+    - gateway_ip: 172.16.128.1/17
     - dns_server: 172.16.0.1
     - domain_name: foobar.local
   roles:

@@ -12,3 +12,10 @@
     owner: root
     group: root
   notify: reload dhcp-server 
+
+- name: Add dhcp iface
+  lineinfile:
+    path: /etc/default/isc-dhcp-server
+    regexp: '^INTERFACESv4='
+    line: INTERFACESv4="{{ dhcp_iface }}"
+  notify: reload dhcp-server
