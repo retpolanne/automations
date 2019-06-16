@@ -1,6 +1,6 @@
 Vagrant.configure("2") do |config|
   config.vm.define "nat" do |nat|
-    nat.vm.box = "debian/stretch64"
+    nat.vm.box = "ubuntu/bionic64"
     nat.vm.network "private_network", ip: "172.16.0.1",
       virtualbox__intnet: true
     nat.vm.provision "ansible" do |ansible|
@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.define "backend" do |backend|
-    backend.vm.box = "debian/stretch64"
+    backend.vm.box = "ubuntu/bionic64"
     backend.vm.network "private_network", ip: "172.16.0.2",
       virtualbox__intnet: true
     backend.vm.provision "ansible" do |ansible|
