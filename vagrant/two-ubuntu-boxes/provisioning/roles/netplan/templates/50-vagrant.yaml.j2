@@ -3,19 +3,20 @@ network:
   version: 2
   renderer: networkd
   ethernets:
+    {% if internal_ip -%}
     {{ internal_iface }}:
-    {% if internal_ip %}
       addresses:
-      - {{ internal_ip }}
-    {% endif %}
-      {% if not is_gateway -%}
+      - {{ internal_ip -}}
+    {% endif -%}
+    {% if not is_gateway %}
       gateway4: {{ gateway_address }}
       nameservers:
         addresses:
         - 8.8.8.8
-      {% endif %}
-     {% if dhcp_iface %}
-     {{ dhcp_iface }}
-       addresses:
-       - {{ gateway_ip }}
-     {% endif %}
+    {% endif %}
+    {% if dhcp_server %}
+
+    {{ dhcp_iface }}:
+      addresses:
+      - {{ gateway_ip }}
+    {% endif %}

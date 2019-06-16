@@ -10,6 +10,7 @@
     - internal_iface: enp0s8
     - external_iface: enp0s3
     - is_gateway: true
+    - dhcp_server: false
   roles:
     - netplan
     - common

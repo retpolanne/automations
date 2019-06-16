@@ -9,8 +9,9 @@
     - internal_ip: 172.16.0.1/24
     - internal_iface: enp0s8
     - external_iface: enp0s3
-    - dhcp_iface: enp0s4
+    - dhcp_iface: enp0s9
     - is_gateway: true
+    - dhcp_server: true
     - subnet: 172.16.128.0
     - netmask: 255.255.128.0
     - range_hi: 172.16.255.254

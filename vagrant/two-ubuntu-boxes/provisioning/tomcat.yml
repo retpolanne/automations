@@ -9,6 +9,7 @@
     - gateway_address: 172.16.0.1
     - internal_iface: enp0s8
     - is_gateway: false
+    - dhcp_server: false
   roles:
     - netplan
     - common
