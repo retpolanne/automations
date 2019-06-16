@@ -7,19 +7,18 @@
   vars:
     - internal_service: 172.16.0.2:8080
     - internal_ip: 172.16.0.1/24
-    - internal_iface: enp0s8
-    - external_iface: enp0s3
+    - internal_iface: eth0
+    - external_iface: eth1
     - is_gateway: true
     - subnet: 172.24.0.0
     - netmask: 255.248.0.0
     - range_hi: 172.24.0.2
     - range_low: 172.31.255.254
-    - gateway: 172.24.0.1
-    - dns_server: 172.24.0.1
+    - gateway: 172.16.0.1
+    - dns_server: 172.16.0.1
   roles:
     - netplan
     - common
-    - ssh-access
     - dhcp
     - nat
     - dnat
