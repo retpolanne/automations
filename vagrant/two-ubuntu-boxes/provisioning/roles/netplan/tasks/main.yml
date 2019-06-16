@@ -1,15 +1,5 @@
 ---
 
-- name: Install netplan
-  apt:
-    name: netplan
-    state: present
-
-- name: Create netplan dir
-  file:
-    name: /etc/netplan
-    state: directory
-
 - name: Copy network config
   template:
     src: templates/50-vagrant.yaml.j2
