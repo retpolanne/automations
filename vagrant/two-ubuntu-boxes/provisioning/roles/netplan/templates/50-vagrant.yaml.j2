@@ -14,3 +14,8 @@ network:
         addresses:
         - 8.8.8.8
       {% endif %}
+     {% if dhcp_iface %}
+     {{ dhcp_iface }}
+       addresses:
+       - {{ gateway_ip }}
+     {% endif %}
