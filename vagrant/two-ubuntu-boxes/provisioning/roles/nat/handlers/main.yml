@@ -1,4 +1,7 @@
 ---
 
 - name: Save iptables
-  shell: iptables-save > /etc/iptables/rules.v4
+  systemd:
+    name: netfilter-persistent
+    state: restarted
+    daemon_reload: yes
